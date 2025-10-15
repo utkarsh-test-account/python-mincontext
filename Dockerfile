@@ -4,6 +4,8 @@ RUN apt-get update && apt-get install -y ffmpeg git curl wget imagemagick build-
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 COPY pyproject.toml ./
+COPY README.md ./
+RUN pip install --no-cache-dir --upgrade pip hatchling
 RUN pip install --no-cache-dir .
 COPY . .
 CMD ["python","app.py"]
